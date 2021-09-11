@@ -14,6 +14,7 @@ public class ShapeInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Temporary feature. Lists shapes eaten
        if (Input.GetKeyDown(KeyCode.Space))
        {
             string stomachLog = "";

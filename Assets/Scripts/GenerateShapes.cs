@@ -8,6 +8,7 @@ public class GenerateShapes : MonoBehaviour
     private Color[] colours = { Color.red, Color.blue, Color.yellow, Color.green };
     private float gameSpeed = -0.5f;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +32,7 @@ public class GenerateShapes : MonoBehaviour
         shapeToSpawn.GetComponent<SpriteRenderer>().color = colours[colourIndex];
 
         var shapeSpawned = Instantiate(shapeToSpawn, new Vector2(2, height), Quaternion.identity);
-
-        // maybe have it moving up and down later?
-        shapeSpawned.GetComponent<Rigidbody2D>().velocity = new Vector2(gameSpeed, 0);
+        
     }
 
     private void IncreaseSpeed()

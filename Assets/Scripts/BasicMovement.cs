@@ -41,7 +41,8 @@ public class BasicMovement : MonoBehaviour
         //     }
         // }
 
-        if (Input.GetButtonUp("Jump") && isJumping == true){
+        if (Input.GetButtonUp("Jump") && isJumping == true && GetComponent<Rigidbody2D>().velocity.y > 0)
+        {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f , 0f);
             isJumping = false;
         }

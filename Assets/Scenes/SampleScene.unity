@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -368,6 +369,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caaf41c65d74c6d4b9600f4a2b43f753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapes:
+  - {fileID: 33395337986547382, guid: 6e2b00a5e4dccd748861f58b9017e395, type: 3}
+  - {fileID: 6109308619180633885, guid: c9026a54a1341a4469f2141834954bbc, type: 3}
+  - {fileID: 7934086195898186510, guid: 6dda250a0cf3e8b4db22d9dfe697f72c, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -769,6 +786,7 @@ GameObject:
   - component: {fileID: 1726826654}
   - component: {fileID: 1726826656}
   - component: {fileID: 1726826655}
+  - component: {fileID: 1726826657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -920,6 +938,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1726826657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726826650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66389dabf74718a4f883288218fb7198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063239622
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +975,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063239622}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2063239624
 Camera:
   m_ObjectHideFlags: 0

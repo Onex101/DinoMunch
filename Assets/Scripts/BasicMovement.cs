@@ -25,7 +25,8 @@ public class BasicMovement : MonoBehaviour
 
     void Jump () {
 
-        if (Input.GetButtonDown("Jump") && isGrounded == true){
+        if (Input.GetButtonDown("Jump") && isGrounded == true && GetComponent<Rigidbody2D>().velocity.x == 0)
+        {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f , jumpHeight), ForceMode2D.Impulse);

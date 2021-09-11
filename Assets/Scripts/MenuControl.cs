@@ -19,9 +19,20 @@ public class MenuControl : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Game");
     }
 
+    public void StartMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    public void InstructionMenu()
+    {
+        SceneManager.LoadScene("Instructions");
+    }
+
+    // Not appropriate for a web build. Do not use.
     public void QuitGame()
     {
         Application.Quit();

@@ -19,22 +19,28 @@ public class ShapeInteraction : MonoBehaviour
     void Start()
     {
         stomach = new List<Shape>();
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i].tag != "Blue Dino")
+                sprites[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // Temporary feature. Lists shapes eaten
-       if (Input.GetKeyDown(KeyCode.Space))
-       {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             string stomachLog = "";
             foreach (Shape shape in stomach)
             {
-                stomachLog += $"{shape.colour} {shape.type}, ";  
+                stomachLog += $"{shape.colour} {shape.type}, ";
             }
 
             Debug.Log($"Stomach currently digesting: {stomachLog}");
-       }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,20 +57,21 @@ public class ShapeInteraction : MonoBehaviour
     {
         string colour;
         string type;
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
 
-        if (shape.color == Color.red)
+        if (shape.color == CustomColors.Red)
         {
             colour = "Red";
         }
-        else if (shape.color == Color.blue)
+        else if (shape.color == CustomColors.Blue)
         {
             colour = "Blue";
         }
-        else if (shape.color == Color.green)
+        else if (shape.color == CustomColors.Green)
         {
             colour = "Green";
         }
-        else if (shape.color == Color.yellow)
+        else if (shape.color == CustomColors.Yellow)
         {
             colour = "Yellow";
         }
@@ -77,6 +84,13 @@ public class ShapeInteraction : MonoBehaviour
         if (type == "Hexagon Flat-Top")
         {
             type = "Hexagon";
+        }
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i].tag == colour + " Dino")
+                sprites[i].enabled = true;
+            else sprites[i].enabled = false;
         }
 
         stomach.Add(new Shape(colour, type));

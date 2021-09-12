@@ -7,17 +7,21 @@ public class ShapeInteraction : MonoBehaviour
     private List<Shape> stomach;
     [SerializeField] private AudioClip eatAudioClip;
     private AudioSource eatAudioSource;
+    public GameObject player;
 
     private void Awake()
     {
         eatAudioSource = gameObject.AddComponent<AudioSource>();
         eatAudioSource.clip = eatAudioClip;
         eatAudioSource.playOnAwake = false;
+        player = GameObject.Find("Player(Clone)");
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        player.tag = "Blue Dino";
         stomach = new List<Shape>();
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < sprites.Length; i++)
@@ -89,8 +93,13 @@ public class ShapeInteraction : MonoBehaviour
         for (int i = 0; i < sprites.Length; i++)
         {
             if (sprites[i].tag == colour + " Dino")
+            {
                 sprites[i].enabled = true;
-            else sprites[i].enabled = false;
+                player.tag = colour + " Dino";
+            }
+            else {
+                sprites[i].enabled = false;
+            } 
         }
 
         stomach.Add(new Shape(colour, type));

@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1380194518978527442}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Blue Dino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eatAudioClip: {fileID: 8300000, guid: e17a1f62b296fa94e8b027812c83eacb, type: 3}
+  player: {fileID: 1317190199035229879}
 --- !u!1 &3567356157957142283
 GameObject:
   m_ObjectHideFlags: 0

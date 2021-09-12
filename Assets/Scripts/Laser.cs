@@ -11,6 +11,7 @@ public class Laser : MonoBehaviour
     public LineRenderer m_lineRenderer;
     Transform m_transform;
     public Text text;
+    public static AudioSource LaserSound; 
 
     private void Awake()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Laser : MonoBehaviour
 {
@@ -19,28 +20,34 @@ public class Laser : MonoBehaviour
         if (Physics2D.Raycast(m_transform.position, transform.right * -1)) {
             RaycastHit2D _hit = Physics2D.Raycast(LaserFirePoint.position, transform.right * -1);
             Draw2DRay(LaserFirePoint.position, _hit.point);
-            
+            Debug.Log(_hit.collider.gameObject.tag);
+            Debug.Log(m_lineRenderer.material.name);
+
             if (_hit.collider.gameObject.tag != "Blue Dino" && m_lineRenderer.material.name == "BlueLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
                 Destroy(_hit.collider.gameObject);
+                GameOver();
             } else if (_hit.collider.gameObject.tag != "Green Dino" && m_lineRenderer.material.name == "GreenLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
                 Destroy(_hit.collider.gameObject);
+                GameOver();
             }  else if (_hit.collider.gameObject.tag != "Red Dino" && m_lineRenderer.material.name == "RedLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
                 Destroy(_hit.collider.gameObject);
+                GameOver();
             }  else if (_hit.collider.gameObject.tag != "Yellow Dino" && m_lineRenderer.material.name == "YellowLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
                 Destroy(_hit.collider.gameObject);
-            } 
+                GameOver();
+            }
         } else {
             Draw2DRay(LaserFirePoint.position, (LaserFirePoint.transform.right * -1) * defDistanceRay);
         }
@@ -59,4 +66,8 @@ public class Laser : MonoBehaviour
         ShootLaser();
     }
 
+    void GameOver() 
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 }

@@ -28,8 +28,8 @@ public class LaserGenerator : MonoBehaviour
         DeactivateLaser();
 
         InvokeRepeating("DeactivateLaser", 15f, 8f);
-        InvokeRepeating("WarnPlayer", 10f, 4f);
-        InvokeRepeating("ActivateLaser", 13f, 5f);
+        InvokeRepeating("WarnPlayer", 10f, 8f);
+        InvokeRepeating("ActivateLaser", 13f, 8f);
     }
 
     // Update is called once per frame
@@ -42,14 +42,13 @@ public class LaserGenerator : MonoBehaviour
         laser = laserContainer.transform.Find("Laser").gameObject; 
         text.text = "";
         int laserIter = (int) UnityEngine.Random.Range(0, 3.9999f);
-        UnityEngine.Debug.Log(laserIter);
         line.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/" + Lasers[ChosenLaser] + ".mat");
-        laser.GetComponent<Renderer>().enabled = true;
+        laser.SetActive(true);
         UnityEngine.Debug.Log("Activated Laser");
     }
 
     void DeactivateLaser() {
-        laser.GetComponent<Renderer>().enabled = false;
+        laser.SetActive(false);
         UnityEngine.Debug.Log("Deactivated Laser");
     }
 

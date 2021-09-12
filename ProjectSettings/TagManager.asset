@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Blue Dino
+  - Red Dino
+  - Yellow Dino
+  - Green Dino
   layers:
   - Default
   - TransparentFX

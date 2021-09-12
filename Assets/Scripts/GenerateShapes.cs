@@ -13,7 +13,7 @@ public class GenerateShapes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnShape", 5, 2);
+        InvokeRepeating("SpawnShape", 3, 1);
         InvokeRepeating("IncreaseSpeed", 30, 30);
     }
 
@@ -27,7 +27,7 @@ public class GenerateShapes : MonoBehaviour
     {
         int shapeType = (int)Random.Range(0, 2.99999f);
         int colourIndex = (int)Random.Range(0, 3.9999f);
-        float height = Random.Range(-0.6f, 0.4f);
+        float height = Random.Range(-0.5f, 0.4f);
 
         GameObject shapeToSpawn = shapes[shapeType];
         shapeToSpawn.GetComponent<SpriteRenderer>().color = colours[colourIndex];

@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class LaserGenerator : MonoBehaviour
 {
-
-    [SerializeField] private float defDistanceRay = 100;
     public Transform LaserFirePoint;
     public LineRenderer line;
     Transform m_transform;

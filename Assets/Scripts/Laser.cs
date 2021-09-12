@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Laser : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Laser : MonoBehaviour
     public Transform LaserFirePoint;
     public LineRenderer m_lineRenderer;
     Transform m_transform;
+    public Text text;
 
     private void Awake()
     {
@@ -23,29 +25,28 @@ public class Laser : MonoBehaviour
             Debug.Log(_hit.collider.gameObject.tag);
             Debug.Log(m_lineRenderer.material.name);
 
-            if (_hit.collider.gameObject.tag != "Blue Dino" && m_lineRenderer.material.name == "BlueLaser (Instance)") {
+            if (_hit.collider.gameObject.tag == "Untagged"){
+                text.text = "You were saved, don't question it";
+            }   
+            else if (_hit.collider.gameObject.tag != "Blue Dino" && m_lineRenderer.material.name == "BlueLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
-                Destroy(_hit.collider.gameObject);
                 GameOver();
             } else if (_hit.collider.gameObject.tag != "Green Dino" && m_lineRenderer.material.name == "GreenLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
-                Destroy(_hit.collider.gameObject);
                 GameOver();
             }  else if (_hit.collider.gameObject.tag != "Red Dino" && m_lineRenderer.material.name == "RedLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
-                Destroy(_hit.collider.gameObject);
                 GameOver();
             }  else if (_hit.collider.gameObject.tag != "Yellow Dino" && m_lineRenderer.material.name == "YellowLaser (Instance)") {
                 Debug.Log("Hit!");
                 Debug.Log(_hit.collider.gameObject.tag);
                 Debug.Log(m_lineRenderer.material.name);
-                Destroy(_hit.collider.gameObject);
                 GameOver();
             }
         } else {

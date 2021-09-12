@@ -5,6 +5,16 @@ using UnityEngine;
 public class ShapeInteraction : MonoBehaviour
 {
     private List<Shape> stomach;
+    [SerializeField] private AudioClip eatAudioClip;
+    private AudioSource eatAudioSource;
+
+    private void Awake()
+    {
+        eatAudioSource = gameObject.AddComponent<AudioSource>();
+        eatAudioSource.clip = eatAudioClip;
+        eatAudioSource.playOnAwake = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +42,7 @@ public class ShapeInteraction : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             DigestShape(collision.gameObject.GetComponent<SpriteRenderer>());
-            // Add sounds in later
-            //eatSound.Play();
+            eatAudioSource.Play();
             Destroy(collision.gameObject);
         }
     }

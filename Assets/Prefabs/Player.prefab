@@ -175,6 +175,7 @@ MonoBehaviour:
   jumpHeight: 5
   jumpTime: 0
   isJumping: 0
+  jumpAudioClip: {fileID: 8300000, guid: dbce26ea390189b499f9809ba1baf6b7, type: 3}
 --- !u!95 &1317190199035229875
 Animator:
   serializedVersion: 3
@@ -253,3 +254,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66389dabf74718a4f883288218fb7198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eatAudioClip: {fileID: 8300000, guid: e17a1f62b296fa94e8b027812c83eacb, type: 3}

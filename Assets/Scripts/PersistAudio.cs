@@ -1,22 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistAudio : MonoBehaviour
 {
     private static Transform backgroundMusic;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private static AudioSource mainAudioSource;
+    private static AudioSource jungleAudioSource;
 
     private void Awake()
     {
@@ -27,7 +18,26 @@ public class PersistAudio : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
-            backgroundMusic = transform.Find("BGM");
+            backgroundMusic = transform.Find("MainBGM");
+            mainAudioSource = backgroundMusic.GetComponent<AudioSource>();
+            jungleAudioSource = transform.Find("GameOverBGM").GetComponent<AudioSource>();
+        }
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "GameOver")
+        {
+            if (mainAudioSource.isPlaying)
+            {
+                mainAudioSource.Stop();
+                jungleAudioSource.Play();
+            }
+        }
+        else if (!mainAudioSource.isPlaying)
+        {
+            jungleAudioSource.Stop();
+            mainAudioSource.Play();
         }
     }
 }

@@ -12,6 +12,16 @@ public class BasicMovement : MonoBehaviour
     public float jumpTime;
     public bool isJumping;
 
+    [SerializeField] private AudioClip jumpAudioClip;
+    private AudioSource jumpAudioSource;
+
+    private void Awake()
+    {
+        jumpAudioSource = gameObject.AddComponent<AudioSource>();
+        jumpAudioSource.clip = jumpAudioClip;
+        jumpAudioSource.playOnAwake = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +40,7 @@ public class BasicMovement : MonoBehaviour
             isJumping = true;
             jumpTimeCounter = jumpTime;
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f , jumpHeight), ForceMode2D.Impulse);
+            jumpAudioSource.Play();
         }
 
         // if (isJumping == true){

@@ -25,7 +25,8 @@ public class BasicMovement : MonoBehaviour
 
     void Jump () {
 
-        if (Input.GetButtonDown("Jump") && isGrounded == true){
+        if (Input.GetButtonDown("Jump") && isGrounded == true && GetComponent<Rigidbody2D>().velocity.x == 0)
+        {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f , jumpHeight), ForceMode2D.Impulse);
@@ -40,7 +41,8 @@ public class BasicMovement : MonoBehaviour
         //     }
         // }
 
-        if (Input.GetButtonUp("Jump") && isJumping == true){
+        if (Input.GetButtonUp("Jump") && isJumping == true && GetComponent<Rigidbody2D>().velocity.y > 0)
+        {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f , 0f);
             isJumping = false;
         }

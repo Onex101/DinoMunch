@@ -17,6 +17,7 @@ public class LaserGenerator : MonoBehaviour
     private GameObject laserContainer;
     private int ChosenLaser;
     private String[] Lasers = {"RedLaser", "BlueLaser", "YellowLaser", "GreenLaser"};
+    [SerializeField] private Material[] laserMaterial;
     public Text text;
     public AudioSource LaserSound; 
     
@@ -41,7 +42,8 @@ public class LaserGenerator : MonoBehaviour
         laser = laserContainer.transform.Find("Laser").gameObject; 
         text.text = "";
         int laserIter = (int) UnityEngine.Random.Range(0, 3.9999f);
-        line.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/" + Lasers[ChosenLaser] + ".mat");
+        line.material = laserMaterial[ChosenLaser];
+            //AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/" + Lasers[ChosenLaser] + ".mat");
         laser.SetActive(true);
         UnityEngine.Debug.Log("Activated Laser");
         LaserSound.Play();

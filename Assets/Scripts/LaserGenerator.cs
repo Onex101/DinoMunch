@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Diagnostics;
 using System;
+using UnityEngine.UI;
 
 public class LaserGenerator : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class LaserGenerator : MonoBehaviour
     public Stopwatch timer;
     private GameObject laser;
     private GameObject laserContainer;
+    private int ChosenLaser;
+    private String[] Lasers = {"RedLaser", "BlueLaser", "YellowLaser", "GreenLaser"};
+    public Text text;
     
     // Start is called before the first frame update
     void Start() {
@@ -23,32 +27,24 @@ public class LaserGenerator : MonoBehaviour
         laserContainer = GameObject.Find("LaserContainer");
         DeactivateLaser();
 
-        InvokeRepeating("DeactivateLaser", 15f, 15f);
-        InvokeRepeating("ActivateLaser", 13f, 17f);
+        InvokeRepeating("DeactivateLaser", 15f, 8f);
+        InvokeRepeating("WarnPlayer", 10f, 4f);
+        InvokeRepeating("ActivateLaser", 13f, 5f);
     }
+
     // Update is called once per frame
     void Update()
     {
-       // Updating();
-    }
-
-    void Timer() {
-        
-        timer = new Stopwatch();
-
-        timer.Start();
-
-        //while(timer.Elapsed < new TimeSpan(100)) {
-
-        //}
-        timer.Stop();
+       
     }
 
     void ActivateLaser() {
         laser = laserContainer.transform.Find("Laser").gameObject; 
+        text.text = "";
+        int laserIter = (int) UnityEngine.Random.Range(0, 3.9999f);
+        UnityEngine.Debug.Log(laserIter);
+        line.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/" + Lasers[ChosenLaser] + ".mat");
         laser.GetComponent<Renderer>().enabled = true;
-        
-        line.materials[3] = line.materials[(int) UnityEngine.Random.Range(0, 3.9999f)];
         UnityEngine.Debug.Log("Activated Laser");
     }
 
@@ -57,24 +53,11 @@ public class LaserGenerator : MonoBehaviour
         UnityEngine.Debug.Log("Deactivated Laser");
     }
 
-    IEnumerator Updating() 
-    {
+    void WarnPlayer() {
+        ChosenLaser = (int) UnityEngine.Random.Range(0, 3.9999f);
 
-        while(true)
-        {
-            yield return new WaitForSeconds(6f);
-
-            ActivateLaser();
-        }
+        UnityEngine.Debug.Log("WARNING!! " + Lasers[ChosenLaser] + " approaching");
+        text.text = "WARNING!! " + Lasers[ChosenLaser] + " approaching";
     }
 
-    IEnumerator UpdateCo() 
-    {
-        while(true)
-        {
-            yield return new WaitForSeconds(2f);
-
-            DeactivateLaser();
-        }
-    }
 }

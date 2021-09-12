@@ -20,6 +20,7 @@ public class LaserGenerator : MonoBehaviour
     private int ChosenLaser;
     private String[] Lasers = {"RedLaser", "BlueLaser", "YellowLaser", "GreenLaser"};
     public Text text;
+    public AudioSource LaserSound; 
     
     // Start is called before the first frame update
     void Start() {
@@ -27,9 +28,9 @@ public class LaserGenerator : MonoBehaviour
         laserContainer = GameObject.Find("LaserContainer");
         DeactivateLaser();
 
-        InvokeRepeating("DeactivateLaser", 15f, 8f);
-        InvokeRepeating("WarnPlayer", 10f, 8f);
-        InvokeRepeating("ActivateLaser", 13f, 8f);
+        InvokeRepeating("DeactivateLaser", 15f, 14f);
+        InvokeRepeating("WarnPlayer", 10f, 14f);
+        InvokeRepeating("ActivateLaser", 13f, 14f);
     }
 
     // Update is called once per frame
@@ -45,9 +46,11 @@ public class LaserGenerator : MonoBehaviour
         line.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/" + Lasers[ChosenLaser] + ".mat");
         laser.SetActive(true);
         UnityEngine.Debug.Log("Activated Laser");
+        LaserSound.Play();
     }
 
     void DeactivateLaser() {
+        LaserSound.Stop();
         laser.SetActive(false);
         UnityEngine.Debug.Log("Deactivated Laser");
     }
